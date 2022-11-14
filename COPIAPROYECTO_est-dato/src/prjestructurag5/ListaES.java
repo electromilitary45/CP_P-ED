@@ -176,44 +176,54 @@ public class ListaES {
                         //se almacena 
                         nuevo.setDato(DE);
                         //INICIO DE LOGICA DE AGREGAR
-                        if (VaciasLista()) {//se pone al inicio
+                        if (vaciaSC()) {
                                 inicioSC = nuevo;
-                        } else if (DE.getNombre().compareTo(inicioSC.getDato().getNombre()) < 0) { // se pone a la derecha
+                                finSC = nuevo;
+                                finSC.setSiguiente(inicioSC);
+                        } else if (DE.getNombre().compareTo(inicioSC.getDato().getNombre()) < 0) {
                                 nuevo.setSiguiente(inicioSC);
                                 inicioSC = nuevo;
-                        } else if (inicioSC.getSiguiente() == null) {//se pone a la izquierda 
-                                inicioSC.setSiguiente(nuevo);
-                        } else {//se pone en medio 
+                                finSC.setSiguiente(inicioSC);
+                        } else if (DE.getNombre().compareTo(finSC.getDato().getNombre()) >= 0) {
+                                finSC.setSiguiente(nuevo);
+                                finSC = nuevo;
+                                finSC.setSiguiente(inicioSC);
+                        } else {
                                 NodoSC aux = inicioSC;
-                                while ((aux.getSiguiente() != null) && (aux.getSiguiente().getDato().getNombre().
-                                        compareTo(DE.getNombre()) < 0)) {
+                                while (aux.getSiguiente().getDato().
+                                        getNombre().compareTo(DE.getNombre()) <= 0) {
                                         aux = aux.getSiguiente();
                                 }
                                 nuevo.setSiguiente(aux.getSiguiente());
                                 aux.setSiguiente(nuevo);
-                        }//FIN DE LOGICA DE AGREGAR
+                        }
+                }//FIN DE LOGICA DE AGREGAR
 
-                        //------RECURSIVIDAD--------
-                        char r = JOptionPane.showInputDialog("Desea ingresar otro evento?"
-                                + "\nSI || NO").toUpperCase().charAt(0);
-                        if (r == 'S') {
-                                agregarEvento();
-                        } else {
-                                JOptionPane.showMessageDialog(null, "Evento agregado");
-                        }
-                } catch (Exception e) {
-                        JOptionPane.showMessageDialog(null, "Error al agregar evento"
-                                + "\n" + e.getMessage());
-                        char r = JOptionPane.showInputDialog("Desea intentar de nuevo?"
-                                + "\nSI || NO").toUpperCase().charAt(0);
-                        if (r == 'S') {
-                                agregarEvento();
-                        }
+                //------RECURSIVIDAD--------
+                char r = JOptionPane.showInputDialog("Desea ingresar otro evento?"
+                        + "\nSI || NO").toUpperCase().charAt(0);
+                if (r == 'S') {
+                        agregarEvento();
+                } else {
+                        JOptionPane.showMessageDialog(null, "Evento agregado");
                 }
+        }
+        catch (Exception e
 
-        }//fin agregarEvento
+        
+                ) {
+                        JOptionPane.showMessageDialog(null, "Error al agregar evento"
+                        + "\n" + e.getMessage());
+                char r = JOptionPane.showInputDialog("Desea intentar de nuevo?"
+                        + "\nSI || NO").toUpperCase().charAt(0);
+                if (r == 'S') {
+                        agregarEvento();
+                }
+        }
 
-        public void mostrarEvento() {
+}//fin agregarEvento
+
+public void mostrarEvento() {
                 if (!vaciaSC()) {
                         String s = "";
                         NodoSC aux = inicioSC;
@@ -233,7 +243,7 @@ public class ListaES {
 
         public void editarEvento() {
                 try {
-
+                        
                         //------RECURSIVIDAD--------
                         char r = JOptionPane.showInputDialog("Desea editar otro evento?"
                                 + "\nSI || NO").toUpperCase().charAt(0);
