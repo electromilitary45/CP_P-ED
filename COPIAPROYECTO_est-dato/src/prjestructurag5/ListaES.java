@@ -196,34 +196,29 @@ public class ListaES {
                                 }
                                 nuevo.setSiguiente(aux.getSiguiente());
                                 aux.setSiguiente(nuevo);
+                        }//FIN DE LOGICA DE AGREGAR
+
+                        //------RECURSIVIDAD--------
+                        char r = JOptionPane.showInputDialog("Desea ingresar otro evento?"
+                                + "\nSI || NO").toUpperCase().charAt(0);
+                        if (r == 'S') {
+                                agregarEvento();
+                        } else {
+                                JOptionPane.showMessageDialog(null, "Evento agregado");
                         }
-                }//FIN DE LOGICA DE AGREGAR
-
-                //------RECURSIVIDAD--------
-                char r = JOptionPane.showInputDialog("Desea ingresar otro evento?"
-                        + "\nSI || NO").toUpperCase().charAt(0);
-                if (r == 'S') {
-                        agregarEvento();
-                } else {
-                        JOptionPane.showMessageDialog(null, "Evento agregado");
-                }
-        }
-        catch (Exception e
-
-        
-                ) {
+                } catch (Exception e) {
                         JOptionPane.showMessageDialog(null, "Error al agregar evento"
-                        + "\n" + e.getMessage());
-                char r = JOptionPane.showInputDialog("Desea intentar de nuevo?"
-                        + "\nSI || NO").toUpperCase().charAt(0);
-                if (r == 'S') {
-                        agregarEvento();
+                                + "\n" + e.getMessage());
+                        char r = JOptionPane.showInputDialog("Desea intentar de nuevo?"
+                                + "\nSI || NO").toUpperCase().charAt(0);
+                        if (r == 'S') {
+                                agregarEvento();
+                        }
                 }
-        }
 
-}//fin agregarEvento
+        }//fin agregarEvento
 
-public void mostrarEvento() {
+        public void mostrarEvento() {
                 if (!vaciaSC()) {
                         String s = "";
                         NodoSC aux = inicioSC;
@@ -243,7 +238,7 @@ public void mostrarEvento() {
 
         public void editarEvento() {
                 try {
-                        
+
                         //------RECURSIVIDAD--------
                         char r = JOptionPane.showInputDialog("Desea editar otro evento?"
                                 + "\nSI || NO").toUpperCase().charAt(0);
