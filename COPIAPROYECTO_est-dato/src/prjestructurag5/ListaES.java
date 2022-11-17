@@ -447,5 +447,8 @@ public class ListaES {
         }
 
     }//fin inactivarEvvento(){}
-
+    
+    //-----------------------------METODOS MODULO 3---------------------------------
+    
+    public void agregarAsiento(){}
 }//fin clase LISTAES(){}
